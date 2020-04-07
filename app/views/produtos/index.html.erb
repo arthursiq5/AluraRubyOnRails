@@ -16,8 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <% todos = Produto.order :nome %>
-            <% todos.each do |produto| %>
+            <% @produtos.each do |produto| %>
                 <tr>
                     <td><%= produto.nome %></td>
                     <td><%= produto.descricao %></td>
