@@ -1,10 +1,16 @@
 <html>
     <body>
         <%= form_for  Produto.new do |form| %>
-            <%= form.label :nome %> <%= form.text_field :nome %> <br/>
-            Descrição <textarea name="produto[descricao]"></textarea> <br/>
-            Preço <input type="number" step="0.01" name="produto[preco]"/> <br/>
-            Quantidade <input type="number" name="produto[quantidade]"/> <br/>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <%= form.label :nome %> <%= form.text_field :nome, class:"form-control" %>
+                    </div>
+                </div>
+            </div>
+                Descrição <textarea name="produto[descricao]"></textarea> <br/>
+                Preço <input type="number" step="0.01" name="produto[preco]"/> <br/>
+                Quantidade <input type="number" name="produto[quantidade]"/> <br/>
 
             <button type="submit">Salvar</button>
         <% end %>
