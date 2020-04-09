@@ -7,8 +7,8 @@ class ProdutosController < ApplicationController
 
     def create
         valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade)
-        produto = Produto.new valores
-        if produto.save
+        @produto = Produto.new valores
+        if @produto.save
             redirect_to root_path
         else
             render :new
