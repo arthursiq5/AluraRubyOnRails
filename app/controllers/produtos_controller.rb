@@ -20,6 +20,6 @@ class ProdutosController < ApplicationController
 
     def busca
         @nome = params[:nome]
-        @produtos = Produto.where "nome like ?", "#{@nome}"
+        @produtos = Produto.where "nome like ?", "%#{@nome}%"
     end
 end
