@@ -26,4 +26,8 @@ class ProdutosController < ApplicationController
         @nome = params[:nome]
         @produtos = Produto.where "nome like ?", "%#{@nome}%"
     end
+
+    def new
+        @produto = Produto.new
+    end
 end
