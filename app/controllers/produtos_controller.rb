@@ -1,13 +1,14 @@
 class ProdutosController < ApplicationController
 
+    before_action :set_produto, only: [:edit,  :update, :destroy]
+
     def index
         @produtos = Produto.order(nome: :desc).limit 2
         @produto_com_desconto = Produto.order(:preco).limit 1
     end
 
     def create
-        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
-        @produto = Produto.new valores
+        @produto = Produto.new produto_params
         if @produto.save
             flash[:notice] = "Produto salvo com sucesso"
             redirect_to root_path
@@ -17,24 +18,18 @@ class ProdutosController < ApplicationController
     end
     
     def destroy
-        id = params[:id]
-        Produto.destroy id
+        @produto.destroy
         
         redirect_to root_path
     end
     
     def edit
-        id = params[:id]
-        @produto = Produto.find(id)
         @departamentos = Departamento.all
         render :new
     end
     
     def update
-        id = params[:id]
-        @produto = Produto.find(id)
-        valores = params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
-        if @produto.update valores
+        if @produto.update produto_params
             flash[:notice] = "Produto atualizado com sucesso"
             redirect_to root_path
         else
@@ -52,5 +47,13 @@ class ProdutosController < ApplicationController
     def new
         @produto = Produto.new
         @departamentos = Departamento.all
+    end
+
+    def produto_params
+        params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
+    end
+
+    def set_produto
+        @produto =  Produto.find(params[:id])
     end
 end
