@@ -1,7 +1,7 @@
 <% if flash[:notice] %>
-    <div class="alert alert-success" role="alert">
-        <%= flash[:notice] %>
-    </div>
+<div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+</div>
 <% end %>
 
 <table class="table table-bordered table-hover">
@@ -9,6 +9,7 @@
         <tr>
             <td>Nome</td>
             <td>Descrição</td>
+            <td>Departamento</td>
             <td>Preço</td>
             <td>Quantidade</td>
             <td colspan="1"></td>
@@ -16,19 +17,20 @@
     </thead>
     <tbody>
         <% @produtos.each do |produto| %>
-            <tr>
-                <td><%= produto.nome %></td>
-                <td><%= produto.descricao %></td>
-                <td><%= produto.preco %></td>
-                <td><%= produto.quantidade %></td>
-                <td><%= 
+        <tr>
+            <td><%= produto.nome %></td>
+            <td><%= produto.descricao %></td>
+            <td><%= produto.departamento.nome %></td>
+            <td><%= produto.preco %></td>
+            <td><%= produto.quantidade %></td>
+            <td><%= 
                         button_to "Remover", 
                         produto, method: :delete,
                         class:"btn btn-danger",
                         data: {confirm: "Tem certeza que deseja deletar o produto #{produto.nome}?"}
                     %>
-                </td>
-            </tr>
+            </td>
+        </tr>
         <% end %>
     </tbody>
 </table>
@@ -40,19 +42,20 @@
         <tr>
             <td>Nome</td>
             <td>Descrição</td>
+            <td>Departamento</td>
             <td>Preço</td>
             <td>Quantidade</td>
         </tr>
     </thead>
     <tbody>
         <% @produto_com_desconto.each do |produto| %>
-            <tr>
-                <td><%= produto.nome %></td>
-                <td><%= produto.descricao %></td>
-                <td><%= produto.preco %></td>
-                <td><%= produto.quantidade %></td>
-            </tr>
+        <tr>
+            <td><%= produto.nome %></td>
+            <td><%= produto.descricao %></td>
+            <td><%= produto.departamento.nome %></td>
+            <td><%= produto.preco %></td>
+            <td><%= produto.quantidade %></td>
+        </tr>
         <% end %>
     </tbody>
 </table>
- 
