@@ -13,6 +13,7 @@ class ProdutosController < ApplicationController
             flash[:notice] = "Produto salvo com sucesso"
             redirect_to root_path
         else
+            @departamentos = Departamento.all
             render :new
         end
     end
