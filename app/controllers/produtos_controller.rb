@@ -13,8 +13,7 @@ class ProdutosController < ApplicationController
             flash[:notice] = "Produto salvo com sucesso"
             redirect_to root_path
         else
-            @departamentos = Departamento.all
-            render :new
+            renderiza
         end
     end
     
@@ -25,8 +24,7 @@ class ProdutosController < ApplicationController
     end
     
     def edit
-        @departamentos = Departamento.all
-        render :new
+        renderiza
     end
     
     def update
@@ -34,9 +32,6 @@ class ProdutosController < ApplicationController
             flash[:notice] = "Produto atualizado com sucesso"
             redirect_to root_path
         else
-            @departamentos = Departamento.all
-            render :new
-
         end
     end
 
@@ -56,5 +51,10 @@ class ProdutosController < ApplicationController
 
     def set_produto
         @produto =  Produto.find(params[:id])
+    end
+
+    def renderiza
+        @departamentos = Departamento.all
+        render :new
     end
 end
