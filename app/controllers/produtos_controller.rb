@@ -32,6 +32,7 @@ class ProdutosController < ApplicationController
             flash[:notice] = "Produto atualizado com sucesso"
             redirect_to root_path
         else
+            renderiza
         end
     end
 
