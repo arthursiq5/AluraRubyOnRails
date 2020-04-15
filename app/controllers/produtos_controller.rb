@@ -46,15 +46,15 @@ class ProdutosController < ApplicationController
         @departamentos = Departamento.all
     end
 
-    def produto_params
+    private def produto_params
         params.require(:produto).permit(:nome, :descricao, :preco, :quantidade, :departamento_id)
     end
 
-    def set_produto
+    private def set_produto
         @produto =  Produto.find(params[:id])
     end
 
-    def renderiza(view)
+    private def renderiza(view)
         @departamentos = Departamento.all
         render view
     end
