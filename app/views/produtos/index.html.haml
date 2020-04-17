@@ -1,0 +1,31 @@
+- if flash[:notice]
+    .alert.alert-success{role: "alert"}= flash[:notice]
+
+%table{class: "table table-bordered table-hover"}
+    %thead
+        %tr
+            %td Nome
+            %td Descrição
+            %td Departamento
+            %td Preço
+            %td Quantidade
+            %td{colspan: "2"}
+
+    %tbody
+        = render @produtos
+    
+.alert.alert-success{role: "alert"}
+    %h3{class: "alert-heading"} Produto com desconto
+
+%table{class: "table table-bordered table-hover"}
+    %thead
+        %tr
+            %td Nome
+            %td Descrição
+            %td Departamento
+            %td Preço
+            %td Quantidade
+            %td{colspan:"2"}>
+
+    %tbody
+        = render @produto_com_desconto
