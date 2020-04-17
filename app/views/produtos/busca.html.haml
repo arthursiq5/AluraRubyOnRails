@@ -1,0 +1,11 @@
+%table{class: "table table-bordered table-hover"}
+    %thead
+        %tr
+            %td Nome
+            %td Descrição
+            %td Departamento
+            %td Preço
+            %td Quantidade
+            %td{colspan: "2"}
+    %tbody
+        = render @produtos
