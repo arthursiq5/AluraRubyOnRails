@@ -1,0 +1,36 @@
+- @produto.errors.full_messages.each do |msg|
+    .alert.alert-danger{role: "alert"}= msg
+
+= form_for  @produto do |form|
+
+    .row
+        .col-sm-8
+            .form-group
+                = form.label :nome
+                = form.text_field :nome, class:"form-control"
+
+    .row
+        .col-sm-8
+            .form-group
+                = form.label :descricao
+                = form.text_area :descricao, class:"form-control", rows:4
+
+    .row
+        .col-sm-2
+            .form-group
+                = form.label :preco
+                = form.number_field :preco, class:"form-control", step:0.01
+
+    .row
+        .col-sm-2
+            .form-group
+                = form.label :quantidade
+                = form.number_field :quantidade, class:"form-control"
+
+    .row
+        .col-sm-2
+            .form-group
+                = form.label :departamento
+                = form.collection_select :departamento_id, @departamentos, :id, :nome, {}, class:"form-control"
+
+    = form.submit texto_da_acao, class:"btn btn-primary"
